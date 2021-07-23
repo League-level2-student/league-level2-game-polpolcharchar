@@ -22,7 +22,7 @@ public class Circle {
 	
 	void update() {
 		if(growing) {
-			d += 0.8;
+			d += 3;
 		}
 		//System.out.println("update");
 	}
@@ -30,7 +30,7 @@ public class Circle {
 	
 	void draw(Graphics g) {
 		g.setColor(Color.red);
-		g.fillOval((int)x-((int)d/2), (int)x-((int)d/2), (int)d, (int)d);
+		g.fillOval((int)x-((int)d/2), (int)y-((int)d/2), (int)d, (int)d);
 	}
 	
 	
