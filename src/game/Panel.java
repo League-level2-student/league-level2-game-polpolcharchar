@@ -10,7 +10,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class Panel extends JPanel implements ActionListener, KeyListener{
+public class Panel extends JPanel implements ActionListener{
 
 	int width;
 	int height;
@@ -22,17 +22,20 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
 	
 	Player p;
 	
+	int score;
+	
 	
 	Panel(int w, int h){
 		width = w;
 		height = h;
-		m = new CircleManager(width, height);
+		m = new CircleManager(width, height, 100);
 		frameDraw = new Timer(1000/60, this);
 		frameDraw.start();
 		startGrow();
+		score = 0;
 		
 		
-		p = new Player(300, 300, 8);
+		p = new Player(300, 300, 8, width - 5, height - 35);
 	}
 	
 	
@@ -53,6 +56,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
 			m.draw(g);
 			p.update();
 			p.draw(g);
+			score++;
 			
 			
 			
@@ -82,6 +86,9 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		//System.out.println("a");
+		m.circleDestroyDiameter += 0.02;
+		m.playerX = p.x;
+		m.playerY = p.y;
 		repaint();
 	}
 
@@ -93,22 +100,6 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
 
 
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		if(e.getKeyChar() == 'a') {
-			p.left = true;
-		}
-		if(e.getKeyChar() == 's') {
-			p.down = true;
-		}
-		if(e.getKeyChar() == 'd') {
-			p.right = true;
-		}
-		if(e.getKeyChar() == 'w') {
-			p.up = true;
-		}
-	}
 
 
 
@@ -118,44 +109,8 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
 
 
 
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-		if(e.getKeyChar() == 'a') {
-			p.left = false;
-		}
-		if(e.getKeyChar() == 's') {
-			p.down = false;
-		}
-		if(e.getKeyChar() == 'd') {
-			p.right = false;
-		}
-		if(e.getKeyChar() == 'w') {
-			p.up = false;
-		}
-		
-		
-		
-		
-		
-		
-	}
 
 
 
-
-
-
-
-
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
 	
 }

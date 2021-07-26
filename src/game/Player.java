@@ -10,6 +10,9 @@ public class Player {
 	
 	int speed;
 	
+	int width;
+	int height;
+	
 	
 	boolean up;
 	boolean down;
@@ -17,7 +20,10 @@ public class Player {
 	boolean right;
 	
 	
-	Player(int startX, int startY, int s){
+	Player(int startX, int startY, int s, int w, int h){
+		
+		width = w;
+		height = h;
 		
 		x = startX;
 		y = startY;
@@ -30,16 +36,32 @@ public class Player {
 	void update() {
 		
 		if(up) {
-			y -= speed;
+			if(y - speed < 0) {
+				y = 0;
+			}else {
+				y -= speed;
+			}
 		}
 		if(down) {
-			y += speed;
+			if(y + speed > height) {
+				y = height;
+			}else {
+				y += speed;
+			}
 		}
 		if(left) {
-			x -= speed;
+			if(x - speed < 0) {
+				x = 0;
+			}else {
+				x -= speed;
+			}
 		}
 		if(right) {
+			if(x + speed > width) {
+				x = width;
+			}else {
 			x += speed;
+			}
 		}
 		
 	}
