@@ -51,7 +51,8 @@ public class StartPanel extends JPanel implements ActionListener{
 		g.setFont(smallFont);
 		g.drawString("Dodge red circles as difficulty increases!", 10, 150);
 		g.drawString("Use WASD to control you, the blue circle!", 10, 200);
-		g.drawString("Press SPACE to start!", 10, 250);
+		g.drawString("Stay alive for as long as possible!", 10, 250);
+		g.drawString("Press SPACE to start!", 10, 300);
 		
 		
 	}
